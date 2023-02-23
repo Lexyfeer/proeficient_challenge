@@ -20,9 +20,11 @@
   border: 1px solid;
 }
 
+.couter-button {
+  background-color: #E2E2E2;
+}
+
 .App-footer {
-  position: fixed;
-  bottom: 0;
   min-width: 100%;
   min-height: 5vh;
   background-color: #FD9255;

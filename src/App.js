@@ -3,6 +3,16 @@ import twitterIcon from './assets/twitterIcon.svg';
 import facebookIcon from './assets/facebookIcon.svg';
 import instagramIcon from './assets/instagramIcon.svg';
 import whatsIcon from './assets/whatsIcon.svg';
+import bedsIcon from './assets/bedsIcon.svg';
+import refIcon from './assets/refIcon.svg';
+import furnitureIcon from './assets/furnitureIcon.svg';
+import ovenIcon from './assets/ovenIcon.svg';
+import sofaIcon from './assets/sofaIcon.svg';
+import tvIcon from './assets/tvIcon.svg';
+import washerIcon from './assets/washerIcon.svg';
+import diningIcon from './assets/diningIcon.svg';
+import deskIcon from './assets/deskIcon.svg';
+import wardrobeIcon from './assets/wardrobeIcon.svg';
 import './App.css';
 
 function App() {
@@ -25,8 +35,70 @@ function App() {
           </a>
         </ul>
       </header>
-      <h1>Hola Mundo Challenge</h1>
-      <footer className="App-footer flex flex-col px-8 justify-evenly items-center py-10 md:flex-row md:items-stretch">
+      <div className='flex flex-col pt-16 md:pt-32 md:items-center border-4'>
+        <div className="flex flex-col items-center">
+          <h1 className="text-2xl">What items to store?</h1>
+          <p className="md:w-96">Select which items you wish to store before moving to your new home. We'll keep 'em safe!</p>
+        </div>
+        <div className='flex flex-col pt-9 md:w-9/12 md:pt-32 border-4'>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-5 md:gap-5">
+            <div>
+              <div className="flex flex-col p-12 justify-center border-4">
+                <img src={bedsIcon} className="h-12 md:h8" alt="Beds icon" />
+                <p className="mt-3">Beds</p>
+              </div>
+              <div className="flex border-2 rounded-md mt-4 justify-around">
+                <button className="couter-button w-5/12">-</button>
+                <p className="w-7/12">1</p>
+                <button className="couter-button w-5/12">+</button>
+              </div>
+            </div>
+            <div className="flex flex-col p-12 justify-center border-4">
+              <img src={refIcon} className="h-12 md:h8" alt="Refrigerador icon" />
+              <p className="mt-3">Refrigerador</p>
+            </div>
+            <div className="flex flex-col p-12 justify-center border-4">
+              <img src={furnitureIcon} className="h-12 md:h8" alt="Furniture icon" />
+              <p className="mt-3">FurnitureIcon</p>
+            </div>
+            <div className="flex flex-col p-12 justify-center border-4">
+              <img src={ovenIcon} className="h-12 md:h8" alt="Oven icon" />
+              <p className="mt-3">Oven</p>
+            </div>
+            <div className="flex flex-col p-12 justify-center border-4">
+              <img src={sofaIcon} className="h-12 md:h8" alt="Sofa icon" />
+              <p className="mt-3">Sofa</p>
+            </div>
+            <div className="flex flex-col p-12 justify-center border-4">
+              <img src={tvIcon} className="h-12 md:h8" alt="TV icon" />
+              <p className="mt-3">TV</p>
+            </div>
+            <div className="flex flex-col p-12 justify-center border-4">
+              <img src={washerIcon} className="h-12 md:h8" alt="Washer dryer icon" />
+              <p className="mt-3">Washer-dryer</p>
+            </div>
+            <div className="flex flex-col p-12 justify-center border-4">
+              <img src={diningIcon} className="h-12 md:h8" alt="Dining icon" />
+              <p className="mt-3">Dining</p>
+            </div>
+            <div className="flex flex-col p-12 justify-center border-4">
+              <img src={deskIcon} className="h-12 md:h8" alt="Desk icon" />
+              <p className="mt-3">Desk</p>
+            </div>
+            <div className="flex flex-col p-12 justify-center border-4">
+              <img src={wardrobeIcon} className="h-12 md:h8" alt="Wardrobe icon" />
+              <p className="mt-3">Wardrobe</p>
+            </div>
+          </div>
+          <div>
+            <p>Buttons</p>
+          </div>
+        </div>
+        <div>
+          <h2 className="text-xl">Summary</h2>
+        </div>
+      </div>
+      <footer className="App-footer flex flex-col px-8 justify-evenly items-center py-10 md:flex-row md:items-stretch md:absolute">
         <div className="flex flex-col items-start justify-between w-9/12 md:w-1/6 mb-3 md:mb-0">
           <img src={logo} className="Footer-logo h-12 md:h8" alt="logo" />
           <p className="text-left mt-3 mb-5">It is a long established fact that a reader will be distracted by the readable content of a page whenters.</p>
