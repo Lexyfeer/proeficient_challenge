@@ -10,14 +10,11 @@
   background-color: #FD9255;
   min-height: 5vh;
   font-size: .8rem;
-  /* font-size: calc(10px + 2vmin); */
   color: white;
 }
 
 .App-menu {
-  /* cursor: pointer; */
   min-width: 50%;
-  border: 1px solid;
 }
 
 .card {
@@ -33,6 +30,18 @@
 .clearBtn {
   border: solid 1px #FD9255;
   background-color: #FFFFFF;
+}
+
+.clearBtn:hover {
+  border: solid 1px #FFFFFF;
+  background-color: #FD9255;
+  transition: ease-out 1s;
+}
+
+.calcBtn:hover {
+  border: solid 1px #FD9255;
+  background-color: #FFFFFF;
+  transition: ease-out .8s;
 }
 
 .calcBtn {
@@ -52,8 +61,4 @@
 
 footer p {
   font-size: .8rem;
-}
-
-.App-link {
-  color: #61dafb;
 }

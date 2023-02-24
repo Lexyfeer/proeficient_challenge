@@ -32,7 +32,12 @@ function App() {
   const [counterWardrobe, controlsWardrobe] = useCounter(0);
 
   // calculadores para mts2
+  const formateador = new Intl.NumberFormat("en", { currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const [totalMts2, setTotalMts2] = useState(0);
+  const [subTotal, setSubTotal] = useState(0);
+  let tax = (subTotal * .16);
+  let totalPay = (subTotal + tax);
+  let discount = totalPay - (totalPay * .50);
 
 
   const countItems = () => {
@@ -48,9 +53,10 @@ function App() {
     let mts2Dining = counterDining * 2;
     let mts2Desk = counterDesk * 0.75;
     let mts2Wardrobe = counterWardrobe * 3.2;
+    let subT = (mts2TotalBeds + mts2TotalRefri + mts2Furniture + mts2Oven + mts2Sofa + mts2TV + mts2Washer + mts2Dining + mts2Desk + mts2Wardrobe) * 200;
 
     setTotalMts2(mts2TotalBeds + mts2TotalRefri + mts2Furniture + mts2Oven + mts2Sofa + mts2TV + mts2Washer + mts2Dining + mts2Desk + mts2Wardrobe);
-
+    setSubTotal(subT);
   };
 
   const resetCouter = () => {
@@ -67,6 +73,10 @@ function App() {
 
     setTotalItems(0);
     setTotalMts2(0);
+    setSubTotal(0);
+    tax = 0;
+    totalPay = 0;
+    discount = 0;
   };
 
   return (
@@ -88,15 +98,15 @@ function App() {
           </a>
         </ul>
       </header>
-      <div className='flex flex-col pt-16 pb-48 md:pt-32 md:items-center border-4'>
+      <div className='flex flex-col pt-16 pb-48 md:pt-32 md:items-center'>
         <div className="flex flex-col items-center">
           <h1 className="text-2xl">What items to store?</h1>
           <p className="md:w-96">Select which items you wish to store before moving to your new home. We'll keep 'em safe!</p>
         </div>
-        <div className='flex flex-col pt-9 md:w-9/12 md:pt-32 border-4'>
+        <div className='flex flex-col pt-9 md:w-9/12 md:pt-32'>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-5 md:gap-5">
             <div>
-              <div className="card flex flex-col p-12 justify-center">
+              <div data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title="1.2 mts2" className="cursor-help card flex flex-col p-12 justify-center">
                 <img src={bedsIcon} className="h-12 md:h8" alt="Beds icon" />
                 <p className="mt-3">Beds</p>
               </div>
@@ -108,7 +118,7 @@ function App() {
             </div>
 
             <div>
-              <div className="card flex flex-col p-12 justify-center border-4">
+              <div data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title="1 mts2" className="cursor-help card flex flex-col p-12 justify-center border-4">
                 <img src={refIcon} className="h-12 md:h8" alt="Refrigerador icon" />
                 <p className="mt-3">Refrigerador</p>
               </div>
@@ -120,7 +130,7 @@ function App() {
             </div>
 
             <div>
-              <div className="card flex flex-col p-12 justify-center border-4">
+              <div data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title=".5 mts2" className="cursor-help card flex flex-col p-12 justify-center border-4">
                 <img src={furnitureIcon} className="h-12 md:h8" alt="Furniture icon" />
                 <p className="mt-3">Furniture</p>
               </div>
@@ -132,7 +142,7 @@ function App() {
             </div>
 
             <div>
-              <div className="card flex flex-col p-12 justify-center border-4">
+              <div data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title=".6 mts2" className="cursor-help card flex flex-col p-12 justify-center border-4">
                 <img src={ovenIcon} className="h-12 md:h8" alt="Oven icon" />
                 <p className="mt-3">Oven</p>
               </div>
@@ -144,7 +154,7 @@ function App() {
             </div>
 
             <div>
-              <div className="card flex flex-col p-12 justify-center border-4">
+              <div data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title="1.5 mts2" className="cursor-help card flex flex-col p-12 justify-center border-4">
                 <img src={sofaIcon} className="h-12 md:h8" alt="Sofa icon" />
                 <p className="mt-3">Sofa</p>
               </div>
@@ -156,7 +166,7 @@ function App() {
             </div>
 
             <div>
-              <div className="card flex flex-col p-12 justify-center border-4">
+              <div data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title=".25 mts2" className="cursor-help card flex flex-col p-12 justify-center border-4">
                 <img src={tvIcon} className="h-12 md:h8" alt="TV icon" />
                 <p className="mt-3">TV</p>
               </div>
@@ -168,7 +178,7 @@ function App() {
             </div>
 
             <div>
-              <div className="card flex flex-col px-8 py-12 justify-center border-4">
+              <div data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title=".5 mts2" className="cursor-help card flex flex-col px-8 py-12 justify-center border-4">
                 <img src={washerIcon} className="h-12 md:h8" alt="Washer dryer icon" />
                 <p className="mt-3">Washer-dryer</p>
               </div>
@@ -180,7 +190,7 @@ function App() {
             </div>
 
             <div>
-              <div className="card flex flex-col p-12 justify-center border-4">
+              <div data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title="2 mts2" className="cursor-help card flex flex-col p-12 justify-center border-4">
                 <img src={diningIcon} className="h-12 md:h8" alt="Dining icon" />
                 <p className="mt-3">Dining</p>
               </div>
@@ -192,7 +202,7 @@ function App() {
             </div>
 
             <div>
-              <div className="card flex flex-col p-12 justify-center border-4">
+              <div data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title=".75 mts2" className="cursor-help card flex flex-col p-12 justify-center border-4">
                 <img src={deskIcon} className="h-12 md:h8" alt="Desk icon" />
                 <p className="mt-3">Desk</p>
               </div>
@@ -204,7 +214,7 @@ function App() {
             </div>
 
             <div>
-              <div className="card flex flex-col p-12 justify-center border-4">
+              <div data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title="3.2 mts2" className="cursor-help card flex flex-col p-12 justify-center border-4">
                 <img src={wardrobeIcon} className="h-12 md:h8" alt="Wardrobe icon" />
                 <p className="mt-3">Wardrobe</p>
               </div>
@@ -224,28 +234,28 @@ function App() {
           <h2 className="text-xl">Summary</h2>
           <div className="sumaryTable w-full m-auto my-16 text-left px-2 py-8 border border-transparent shadow-sm md:w-25 md:p-8">
             <div className="flex justify-between">
-              <p className="w-6/12 py-2">Total Items</p>
+              <p data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title="Number of items selected in the form" className="cursor-help w-6/12 py-2">Total Items</p>
               <p className="w-6/12 py-2">{totalItems}</p>
             </div>
             <div className="flex justify-between">
-              <p className="w-6/12 py-2">Total m²</p>
+              <p data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title="Total m2 of selected items" className="cursor-help w-6/12 py-2">Total m²</p>
               <p className="w-6/12 py-2">{totalMts2}</p>
             </div>
             <div className="flex justify-between">
-              <p className="w-6/12 py-2">Subtotal</p>
-              <p className="w-6/12 py-2">$1710</p>
+              <p data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title="1m2 = $200" className="cursor-help w-6/12 py-2">Subtotal</p>
+              <p className="w-6/12 py-2">${formateador.format(subTotal)}</p>
             </div>
             <div className="flex justify-between">
-              <p className="w-6/12 py-2">Tax</p>
-              <p className="w-6/12 py-2">$273.6</p>
+              <p data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title="Tax is 16%" className="cursor-help w-6/12 py-2">Tax</p>
+              <p className="w-6/12 py-2">${formateador.format(tax)}</p>
             </div>
             <div className="flex justify-between font-bold">
               <p className="w-6/12 py-2">Total</p>
-              <p className="w-6/12 py-2">$1,983.6</p>
+              <p className="w-6/12 py-2">${formateador.format(totalPay)}</p>
             </div>
             <div className="flex justify-between font-bold">
-              <p className="w-6/12 py-2">Due Today 50%</p>
-              <p className="w-6/12 py-2">$991.8</p>
+              <p data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="dark" title="50% of total" className="cursor-help w-6/12 py-2">Due Today 50%</p>
+              <p className="w-6/12 py-2">${formateador.format(discount)}</p>
             </div>
           </div>
         </div>
@@ -299,3 +309,5 @@ function App() {
 }
 
 export default App;
+
+
