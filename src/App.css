@@ -20,8 +20,27 @@
   border: 1px solid;
 }
 
+.card {
+  border: solid 1px #F9F9F9;
+  background: #FFFFFF;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.08);
+}
+
 .couter-button {
   background-color: #E2E2E2;
+}
+
+.clearBtn {
+  border: solid 1px #FD9255;
+  background-color: #FFFFFF;
+}
+
+.calcBtn {
+  background-color: #FD9255;
+}
+
+.sumaryTable {
+  background-color: #F9F9F9;
 }
 
 .App-footer {

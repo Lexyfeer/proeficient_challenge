@@ -14,8 +14,42 @@ import diningIcon from './assets/diningIcon.svg';
 import deskIcon from './assets/deskIcon.svg';
 import wardrobeIcon from './assets/wardrobeIcon.svg';
 import './App.css';
+import useCounter from './useCounter';
+import { useState } from 'react';
+
 
 function App() {
+  const [totalItems, setTotalItems] = useState(0);
+  const [counterBeds, controlsBeds] = useCounter(0);
+  const [counterRefri, controlsRefri] = useCounter(0);
+  const [counterFurniture, controlsFurniture] = useCounter(0);
+  const [counterOven, controlsOven] = useCounter(0);
+  const [counterSofa, controlsSofa] = useCounter(0);
+  const [counterTV, controlsTV] = useCounter(0);
+  const [counterWasher, controlsWasher] = useCounter(0);
+  const [counterDining, controlsDining] = useCounter(0);
+  const [counterDesk, controlsDesk] = useCounter(0);
+  const [counterWardrobe, controlsWardrobe] = useCounter(0);
+
+  const countItems = () => {
+    setTotalItems(counterBeds + counterRefri + counterFurniture + counterOven + counterSofa + counterTV + counterWasher + counterDining + counterDesk + counterWardrobe);
+  };
+
+  const resetCouter = () => {
+    controlsBeds("reset");
+    controlsRefri("reset");
+    controlsFurniture("reset");
+    controlsOven("reset");
+    controlsSofa("reset");
+    controlsTV("reset");
+    controlsWasher("reset");
+    controlsDining("reset");
+    controlsDesk("reset");
+    controlsWardrobe("reset");
+
+    setTotalItems(0);
+  };
+
   return (
     <div className="App">
       <header className="App-header flex justify-evenly items-center py-2">
@@ -35,7 +69,7 @@ function App() {
           </a>
         </ul>
       </header>
-      <div className='flex flex-col pt-16 md:pt-32 md:items-center border-4'>
+      <div className='flex flex-col pt-16 pb-48 md:pt-32 md:items-center border-4'>
         <div className="flex flex-col items-center">
           <h1 className="text-2xl">What items to store?</h1>
           <p className="md:w-96">Select which items you wish to store before moving to your new home. We'll keep 'em safe!</p>
@@ -43,59 +77,158 @@ function App() {
         <div className='flex flex-col pt-9 md:w-9/12 md:pt-32 border-4'>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-5 md:gap-5">
             <div>
-              <div className="flex flex-col p-12 justify-center border-4">
+              <div className="card flex flex-col p-12 justify-center">
                 <img src={bedsIcon} className="h-12 md:h8" alt="Beds icon" />
                 <p className="mt-3">Beds</p>
               </div>
               <div className="flex border-2 rounded-md mt-4 justify-around">
-                <button className="couter-button w-5/12">-</button>
-                <p className="w-7/12">1</p>
-                <button className="couter-button w-5/12">+</button>
+                <button className="couter-button w-5/12" onClick={() => controlsBeds("decrement")}>-</button>
+                <p className="w-7/12">{counterBeds}</p>
+                <button className="couter-button w-5/12" onClick={() => controlsBeds("increment")}>+</button>
               </div>
             </div>
-            <div className="flex flex-col p-12 justify-center border-4">
-              <img src={refIcon} className="h-12 md:h8" alt="Refrigerador icon" />
-              <p className="mt-3">Refrigerador</p>
+
+            <div>
+              <div className="card flex flex-col p-12 justify-center border-4">
+                <img src={refIcon} className="h-12 md:h8" alt="Refrigerador icon" />
+                <p className="mt-3">Refrigerador</p>
+              </div>
+              <div className="flex border-2 rounded-md mt-4 justify-around">
+                <button className="couter-button w-5/12" onClick={() => controlsRefri("decrement")}>-</button>
+                <p className="w-7/12">{counterRefri}</p>
+                <button className="couter-button w-5/12" onClick={() => controlsRefri("increment")}>+</button>
+              </div>
             </div>
-            <div className="flex flex-col p-12 justify-center border-4">
-              <img src={furnitureIcon} className="h-12 md:h8" alt="Furniture icon" />
-              <p className="mt-3">FurnitureIcon</p>
+
+            <div>
+              <div className="card flex flex-col p-12 justify-center border-4">
+                <img src={furnitureIcon} className="h-12 md:h8" alt="Furniture icon" />
+                <p className="mt-3">Furniture</p>
+              </div>
+              <div className="flex border-2 rounded-md mt-4 justify-around">
+                <button className="couter-button w-5/12" onClick={() => controlsFurniture("decrement")}>-</button>
+                <p className="w-7/12">{counterFurniture}</p>
+                <button className="couter-button w-5/12" onClick={() => controlsFurniture("increment")}>+</button>
+              </div>
             </div>
-            <div className="flex flex-col p-12 justify-center border-4">
-              <img src={ovenIcon} className="h-12 md:h8" alt="Oven icon" />
-              <p className="mt-3">Oven</p>
+
+            <div>
+              <div className="card flex flex-col p-12 justify-center border-4">
+                <img src={ovenIcon} className="h-12 md:h8" alt="Oven icon" />
+                <p className="mt-3">Oven</p>
+              </div>
+              <div className="flex border-2 rounded-md mt-4 justify-around">
+                <button className="couter-button w-5/12" onClick={() => controlsOven("decrement")}>-</button>
+                <p className="w-7/12">{counterOven}</p>
+                <button className="couter-button w-5/12" onClick={() => controlsOven("increment")}>+</button>
+              </div>
             </div>
-            <div className="flex flex-col p-12 justify-center border-4">
-              <img src={sofaIcon} className="h-12 md:h8" alt="Sofa icon" />
-              <p className="mt-3">Sofa</p>
+
+            <div>
+              <div className="card flex flex-col p-12 justify-center border-4">
+                <img src={sofaIcon} className="h-12 md:h8" alt="Sofa icon" />
+                <p className="mt-3">Sofa</p>
+              </div>
+              <div className="flex border-2 rounded-md mt-4 justify-around">
+                <button className="couter-button w-5/12" onClick={() => controlsSofa("decrement")}>-</button>
+                <p className="w-7/12">{counterSofa}</p>
+                <button className="couter-button w-5/12" onClick={() => controlsSofa("increment")}>+</button>
+              </div>
             </div>
-            <div className="flex flex-col p-12 justify-center border-4">
-              <img src={tvIcon} className="h-12 md:h8" alt="TV icon" />
-              <p className="mt-3">TV</p>
+
+            <div>
+              <div className="card flex flex-col p-12 justify-center border-4">
+                <img src={tvIcon} className="h-12 md:h8" alt="TV icon" />
+                <p className="mt-3">TV</p>
+              </div>
+              <div className="flex border-2 rounded-md mt-4 justify-around">
+                <button className="couter-button w-5/12" onClick={() => controlsTV("decrement")}>-</button>
+                <p className="w-7/12">{counterTV}</p>
+                <button className="couter-button w-5/12" onClick={() => controlsTV("increment")}>+</button>
+              </div>
             </div>
-            <div className="flex flex-col p-12 justify-center border-4">
-              <img src={washerIcon} className="h-12 md:h8" alt="Washer dryer icon" />
-              <p className="mt-3">Washer-dryer</p>
+
+            <div>
+              <div className="card flex flex-col px-8 py-12 justify-center border-4">
+                <img src={washerIcon} className="h-12 md:h8" alt="Washer dryer icon" />
+                <p className="mt-3">Washer-dryer</p>
+              </div>
+              <div className="flex border-2 rounded-md mt-4 justify-around">
+                <button className="couter-button w-5/12" onClick={() => controlsWasher("decrement")}>-</button>
+                <p className="w-7/12">{counterWasher}</p>
+                <button className="couter-button w-5/12" onClick={() => controlsWasher("increment")}>+</button>
+              </div>
             </div>
-            <div className="flex flex-col p-12 justify-center border-4">
-              <img src={diningIcon} className="h-12 md:h8" alt="Dining icon" />
-              <p className="mt-3">Dining</p>
+
+            <div>
+              <div className="card flex flex-col p-12 justify-center border-4">
+                <img src={diningIcon} className="h-12 md:h8" alt="Dining icon" />
+                <p className="mt-3">Dining</p>
+              </div>
+              <div className="flex border-2 rounded-md mt-4 justify-around">
+                <button className="couter-button w-5/12" onClick={() => controlsDining("decrement")}>-</button>
+                <p className="w-7/12">{counterDining}</p>
+                <button className="couter-button w-5/12" onClick={() => controlsDining("increment")}>+</button>
+              </div>
             </div>
-            <div className="flex flex-col p-12 justify-center border-4">
-              <img src={deskIcon} className="h-12 md:h8" alt="Desk icon" />
-              <p className="mt-3">Desk</p>
+
+            <div>
+              <div className="card flex flex-col p-12 justify-center border-4">
+                <img src={deskIcon} className="h-12 md:h8" alt="Desk icon" />
+                <p className="mt-3">Desk</p>
+              </div>
+              <div className="flex border-2 rounded-md mt-4 justify-around">
+                <button className="couter-button w-5/12" onClick={() => controlsDesk("decrement")}>-</button>
+                <p className="w-7/12">{counterDesk}</p>
+                <button className="couter-button w-5/12" onClick={() => controlsDesk("increment")}>+</button>
+              </div>
             </div>
-            <div className="flex flex-col p-12 justify-center border-4">
-              <img src={wardrobeIcon} className="h-12 md:h8" alt="Wardrobe icon" />
-              <p className="mt-3">Wardrobe</p>
+
+            <div>
+              <div className="card flex flex-col p-12 justify-center border-4">
+                <img src={wardrobeIcon} className="h-12 md:h8" alt="Wardrobe icon" />
+                <p className="mt-3">Wardrobe</p>
+              </div>
+              <div className="flex border-2 rounded-md mt-4 justify-around">
+                <button className="couter-button w-5/12" onClick={() => controlsWardrobe("decrement")}>-</button>
+                <p className="w-7/12">{counterWardrobe}</p>
+                <button className="couter-button w-5/12" onClick={() => controlsWardrobe("increment")}>+</button>
+              </div>
             </div>
           </div>
-          <div>
-            <p>Buttons</p>
+          <div className="flex justify-between my-8">
+            <button className="clearBtn w-48 h-10 rounded-lg" onClick={resetCouter}>Clear</button>
+            <button className="calcBtn w-48 h-10 rounded-lg" onClick={countItems}>Calculate</button>
           </div>
         </div>
         <div>
           <h2 className="text-xl">Summary</h2>
+          <div className="sumaryTable w-full m-auto my-16 text-left px-2 py-8 border border-transparent shadow-sm md:w-25 md:p-8">
+            <div className="flex justify-between">
+              <p className="w-6/12 py-2">Total Items</p>
+              <p className="w-6/12 py-2">{totalItems}</p>
+            </div>
+            <div className="flex justify-between">
+              <p className="w-6/12 py-2">Total m²</p>
+              <p className="w-6/12 py-2">8.55</p>
+            </div>
+            <div className="flex justify-between">
+              <p className="w-6/12 py-2">Subtotal</p>
+              <p className="w-6/12 py-2">$1710</p>
+            </div>
+            <div className="flex justify-between">
+              <p className="w-6/12 py-2">Tax</p>
+              <p className="w-6/12 py-2">$273.6</p>
+            </div>
+            <div className="flex justify-between font-bold">
+              <p className="w-6/12 py-2">Total</p>
+              <p className="w-6/12 py-2">$1,983.6</p>
+            </div>
+            <div className="flex justify-between font-bold">
+              <p className="w-6/12 py-2">Due Today 50%</p>
+              <p className="w-6/12 py-2">$991.8</p>
+            </div>
+          </div>
         </div>
       </div>
       <footer className="App-footer flex flex-col px-8 justify-evenly items-center py-10 md:flex-row md:items-stretch md:absolute">
