@@ -31,8 +31,26 @@ function App() {
   const [counterDesk, controlsDesk] = useCounter(0);
   const [counterWardrobe, controlsWardrobe] = useCounter(0);
 
+  // calculadores para mts2
+  const [totalMts2, setTotalMts2] = useState(0);
+
+
   const countItems = () => {
     setTotalItems(counterBeds + counterRefri + counterFurniture + counterOven + counterSofa + counterTV + counterWasher + counterDining + counterDesk + counterWardrobe);
+
+    let mts2TotalBeds = counterBeds * 1.2;
+    let mts2TotalRefri = counterRefri * 1;
+    let mts2Furniture = counterFurniture * 0.5;
+    let mts2Oven = counterOven * 0.6;
+    let mts2Sofa = counterSofa * 1.5;
+    let mts2TV = counterTV * 0.25;
+    let mts2Washer = counterWasher * 0.5;
+    let mts2Dining = counterDining * 2;
+    let mts2Desk = counterDesk * 0.75;
+    let mts2Wardrobe = counterWardrobe * 3.2;
+
+    setTotalMts2(mts2TotalBeds + mts2TotalRefri + mts2Furniture + mts2Oven + mts2Sofa + mts2TV + mts2Washer + mts2Dining + mts2Desk + mts2Wardrobe);
+
   };
 
   const resetCouter = () => {
@@ -48,6 +66,7 @@ function App() {
     controlsWardrobe("reset");
 
     setTotalItems(0);
+    setTotalMts2(0);
   };
 
   return (
@@ -210,7 +229,7 @@ function App() {
             </div>
             <div className="flex justify-between">
               <p className="w-6/12 py-2">Total m²</p>
-              <p className="w-6/12 py-2">8.55</p>
+              <p className="w-6/12 py-2">{totalMts2}</p>
             </div>
             <div className="flex justify-between">
               <p className="w-6/12 py-2">Subtotal</p>
